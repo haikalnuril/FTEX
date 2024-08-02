@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
+use App\Models\Record;
 use App\Models\User;
-use App\Models\record;
 use Illuminate\Auth\Access\Response;
 
 class RecordPolicy
@@ -19,7 +19,7 @@ class RecordPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, record $record): bool
+    public function view(User $user, Record $record): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class RecordPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, record $record): bool
+    public function update(User $user, Record $record): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class RecordPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, record $record): bool
+    public function delete(User $user, Record $record): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class RecordPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, record $record): bool
+    public function restore(User $user, Record $record): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class RecordPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, record $record): bool
+    public function forceDelete(User $user, Record $record): bool
     {
         //
     }
