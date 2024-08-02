@@ -14,7 +14,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: #cecece;">
     @include('components.navbar')
     @yield('content')
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

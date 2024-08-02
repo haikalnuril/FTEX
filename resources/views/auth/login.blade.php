@@ -7,6 +7,9 @@
                 <div class="card-body">
                     <form action="{{ route('login') }}" method="post">
                         @csrf
+                        <div>
+                            <h3 class="fw-bold d-flex justify-content-center mb-5">Welcome To FTEX</h3>
+                        </div>
                         <div class="form-group mb-3">
                             <label for="email" class="mb-1 fw-bold">Email</label>
                             <input type="email" name="email" id="email" placeholder="Email@example.com" class="form-control">

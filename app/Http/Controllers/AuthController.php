@@ -40,6 +40,6 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken(); // Menghasilkan token sesi baru
 
-        return redirect('/')->with('status', 'You have been logged out successfully.'); // Redirect ke halaman utama dengan pesan sukses
+        return redirect('/login')->with('status', 'You have been logged out successfully.'); // Redirect ke halaman utama dengan pesan sukses
     }
 }
