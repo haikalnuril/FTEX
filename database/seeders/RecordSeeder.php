@@ -23,7 +23,7 @@ class RecordSeeder extends Seeder
             'produksi' => '30',
             'berat' => '1.4',
             'butir' => '22',
-            'retakKg' => '40',
+            'retakKg' => '0',
         ]);
 
         $data2 = Record::create([
@@ -34,9 +34,22 @@ class RecordSeeder extends Seeder
             'afkir' => '0',
             'pakan' => '197',
             'produksi' => '30',
-            'berat' => '1.4',
+            'berat' => '92',
             'butir' => '22',
-            'retakKg' => '40',
+            'retakKg' => '1',
+        ]);
+
+        $data3 = Record::create([
+            'date' => '2024-08-04',
+            'umur' => '50',
+            'populasi' => '2561',
+            'mati' => '0',
+            'afkir' => '0',
+            'pakan' => '197',
+            'produksi' => '30',
+            'berat' => '114',
+            'butir' => '22',
+            'retakKg' => '1.5',
         ]);
     }
 }

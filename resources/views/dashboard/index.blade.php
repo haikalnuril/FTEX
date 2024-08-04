@@ -33,8 +33,8 @@
                                         <th>Total</th>
                                         <th>Gr/ekor</th>
                                         <th>Butir</th>
+                                        <th>+ / -</th>
                                         <th>Berat</th>
-                                        <th>Kg</th>
                                         <th>Butir</th>
                                         <th>Kg</th>
                                         <th>Gr/Butir</th>
@@ -42,8 +42,75 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Add your table data rows here -->
-                                </tbody>
+                                    @php
+                                        $previousProduksi = null;
+                                    @endphp
+
+                                    @foreach ($reports as $report)
+                                        <tr>
+                                            <td class="px-6 py-4">
+                                                {{ \Carbon\Carbon::parse($report->date)->format('d-m-Y') }}
+                                            </td>
+                                            <td>
+                                                {{ $report->umur }}
+                                            </td>
+                                            <td>
+                                                {{ $report->populasi }}
+                                            </td>
+                                            <td>
+                                                {{ $report->mati }}
+                                            </td>
+                                            <td>
+                                                {{ $report->afkir }}
+                                            </td>
+                                            <td>
+                                                {{ $report->pakan }}
+                                            </td>
+                                            <td>
+                                                @php
+                                                    $result = ceil(($report->pakan / $report->populasi) * 1000);
+                                                @endphp
+                                                {{ $result }}
+                                            </td>
+                                            <td>
+                                                <!-- This is the Butir column -->
+                                                {{ $report->produksi }}
+                                            </td>
+                                            <td>
+                                                <!-- This is the +/- column -->
+                                                @if ($previousProduksi === null)
+                                                    {{ $report->produksi }}
+                                                @else
+                                                    {{ $report->produksi - $previousProduksi }}
+                                                @endif
+                                            </td>
+                                            <td>
+                                                {{ $report->berat }}
+                                            </td>
+                                            <td>
+                                                {{ $report->butir }}
+                                            </td>
+                                            <td>
+                                                {{ $report->retakKg }}
+                                            </td>
+                                            <td>
+                                                @php
+                                                    $result = ceil(($report->berat * 1000 ) / $report->produksi );
+                                                @endphp
+                                                {{ $result }}
+                                            </td>
+                                            <td>
+                                                {{ number_format(($report->produksi / $report->populasi) * 100, 2) }}%
+                                            </td>
+                                            <td>
+                                                {{ number_format($report->pakan / ($report->berat + $report->retakKg), 2) }}
+                                            </td>
+                                        </tr>
+                                        @php
+                                            $previousProduksi = $report->produksi;
+                                        @endphp
+                                    @endforeach
+                                    </tbody>
                             </table>
                         </div>
                     </div>

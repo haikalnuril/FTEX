@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('berat');
             $table->string('butir');
             $table->string('retakKg');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

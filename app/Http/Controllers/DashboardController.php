@@ -9,7 +9,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $reports = Record::latest()->get();
-        return view('dashboard.index', compact('reports'));
+        $reports = Record::all();
+        $report1 = $reports->skip(1);
+        return view('dashboard.index', compact('reports', 'report1'));
     }
 }
