@@ -15,4 +15,13 @@ class RecordController extends Controller
     {
         //
     }
+
+    public function destroy($id)
+    {
+        $Record = Record::findOrFail($id);
+
+        $Record->delete();
+
+        return redirect()->route('dashboard');
+    }
 }
