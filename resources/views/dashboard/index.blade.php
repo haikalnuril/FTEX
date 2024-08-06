@@ -11,6 +11,9 @@
                     <div class="card-body">
                         hello guys
                     </div>
+                    <div>
+                        <a href="{{ route('create') }}" class="btn btn-primary">Tambah Data</a>
+                    </div>
                     <div class="container-fluid">
                         <div class="table-responsive">
                             <table class="table table-bordered table-sm align-middle text-center">
