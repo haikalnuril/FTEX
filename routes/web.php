@@ -33,5 +33,9 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('dashboard/create', [RecordController::class, 'create'])->name('create');
+    Route::post('dashboard', [RecordController::class, 'store'])->name('store');
+    Route::get('dashboard/{id}/edit', [RecordController::class, 'edit'])->name('edit');
+    Route::put('dashboard/{id}', [RecordController::class, 'update'])->name('update');
     Route::delete('dashboard/{id}', [RecordController::class, 'destroy'])->name('destroy');
 });
