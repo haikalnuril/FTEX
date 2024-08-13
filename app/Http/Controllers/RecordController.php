@@ -58,7 +58,6 @@ class RecordController extends Controller
             'retakKg.numeric' => 'Jumlah retak harus berupa angka.',
         ]);
 
-
         Record::create($validated);
 
         return redirect('/dashboard')->with('success', 'Data berhasil ditambahkan.');
