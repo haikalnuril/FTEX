@@ -63,6 +63,53 @@ class RecordController extends Controller
         return redirect('/dashboard')->with('success', 'Data berhasil ditambahkan.');
     }
 
+    public function edit($id){
+        $record = Record::findOrFail($id);
+        return view('dashboard.edit', compact('record'));
+    }
+
+    public function update(Request $request){
+        $record = Record::findOrFail($request->id);
+        $validated = $request->validate([
+            'date' => 'required|date',
+            'umur' => 'required|numeric',
+            'populasi' => 'required|numeric',
+            'mati' => 'required|numeric',
+            'afkir' => 'required|numeric',
+            'pakan' => 'required|numeric',
+            'produksi' => 'required|numeric',
+            'berat' => 'required|numeric',
+            'butir' => 'required|numeric',
+            'retakKg' => 'required|numeric',
+            'keterangan' => '',
+        ], [
+            'date.required' => 'Tanggal harus diisi.',
+            'date.date' => 'Format tanggal tidak valid.',
+            'umur.required' => 'Umur harus diisi.',
+            'umur.numeric' => 'Umur harus berupa angka.',
+            'populasi.required' => 'Populasi harus diisi.',
+            'populasi.numeric' => 'Populasi harus berupa angka.',
+            'mati.required' => 'Jumlah mati harus diisi.',
+            'mati.numeric' => 'Jumlah mati harus berupa angka.',
+            'afkir.required' => 'Jumlah afkir harus diisi.',
+            'afkir.numeric' => 'Jumlah afkir harus berupa angka.',
+            'pakan.required' => 'Jumlah pakan harus diisi.',
+            'pakan.numeric' => 'Jumlah pakan harus berupa angka.',
+            'produksi.required' => 'Jumlah produksi harus diisi.',
+            'produksi.numeric' => 'Jumlah produksi harus berupa angka.',
+            'berat.required' => 'Berat harus diisi.',
+            'berat.numeric' => 'Berat harus berupa angka.',
+            'butir.required' => 'Jumlah butir harus diisi.',
+            'butir.numeric' => 'Jumlah butir harus berupa angka.',
+            'retakKg.required' => 'Jumlah retak harus diisi.',
+            'retakKg.numeric' => 'Jumlah retak harus berupa angka.',
+        ]);
+
+        $record->update($validated);
+
+        return redirect('/dashboard')->with('success', 'Data berhasil diubah.');
+    }
+
     public function destroy($id)
     {
         $Record = Record::findOrFail($id);
