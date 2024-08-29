@@ -16,6 +16,12 @@ class DashboardController extends Controller
         return view('dashboard.index', compact('reports', 'report1'));
     }
 
+    public function view(){
+        $reports = Record::orderby('date', 'asc')->get();
+        $report1 = $reports->skip(1);
+        return view('dashboard.table', compact('reports', 'report1'));
+    }
+
     public function export(){
         return Excel::download(new ExportAyam, 'report.xlsx');
     }

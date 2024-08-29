@@ -3,16 +3,18 @@
 namespace App\Exports;
 
 use App\Models\Record;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromView;
+use Illuminate\Contracts\View\View;
 
-class ExportAyam implements FromCollection
+class ExportAyam implements FromView
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function view():View
     {
-        $report = Record::orderby('date', 'asc')->get();
-        return $report;
+        $reports = Record::orderby('date', 'asc')->get();
+        $report1 = $reports->skip(1);
+        return view('dashboard.table', compact('reports', 'report1'));
     }
 }

@@ -10,9 +10,11 @@
                     </div>
                     <div>
                         <a href="{{ route('create') }}" class="m-3 btn btn-primary">Tambah Data</a>
+                        <a href="{{ route('export') }}" class=" btn btn-success">Download</a>
                     </div>
                     <div class="container-fluid">
                         <div class="table-responsive">
+                            
                             <table class="table table-bordered table-sm align-middle text-center">
                                 <thead class="table-dark">
                                     <tr>
