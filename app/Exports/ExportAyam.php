@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Record;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class ExportAyam implements FromCollection
@@ -11,6 +12,7 @@ class ExportAyam implements FromCollection
     */
     public function collection()
     {
-        return ;
+        $report = Record::orderby('date', 'asc')->get();
+        return $report;
     }
 }

@@ -34,4 +34,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard/{id}/edit', [RecordController::class, 'edit'])->name('edit');
     Route::put('dashboard/{id}', [RecordController::class, 'update'])->name('update');
     Route::delete('dashboard/{id}', [RecordController::class, 'destroy'])->name('destroy');
+    Route::get('dashboard/export', [DashboardController::class, 'export'])->name('export');
 });
